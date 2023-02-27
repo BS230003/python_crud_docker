@@ -1,0 +1,38 @@
+
+<html>
+<title> A Python Test App</title>
+<body>
+
+<h2>Created by Bahadur Singh on for Test (01-Feb-2023) </h2>
+
+<hr>
+<ul>
+    <li>   <a href="/read"> Read Data both sqlite3 & MongoDB </a> </li>
+    <li>   <a href="/add"> Add / Delete Record sqlite3 </a> </li>
+</ul>
+<hr>
+File read ?? {{ filename}}
+<pre>
+    How to run it: 
+    Select Project -> app.py => Run in Terminal 
+    Terminal Commands to init sqlite3 DB:
+        >> & c:/python39/python.exe //DEV/NODE_JS/python_test/initdb.py 
+        >><b> flask run</b> 
+            This will open the HTTP server app at site port 5000 
+        It can now pass data to Server (Python) and can be checked on server side.
+        localhost:5000/
+        
+        or 
+        >> py app.js will run same localhost:5000/
+
+</pre>
+
+    <a href="https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3">Link to Tutorial Site </a>
+    <br>
+    <a href="https://www.geeksforgeeks.org/get-post-requests-using-python/">Python GET/POST Tutorial</a>
+
+
+    <img src="{{ url_for('static', filename='images/cat2.PNG') }}" alt='missing image'/>
+</body>
+
+</html>

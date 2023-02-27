@@ -1,0 +1,58 @@
+
+
+<html>
+<title> Py Test Docker App</title>
+<body>
+
+<h4>Created by Bahadur Singh on 24 Frb 2023 on Docker</h4>
+
+<h2> Example of Python <- -> sqlite3 DB access. </h2>
+       
+        <table border="2">
+            <tr><th>Name</th> <th>Content</th><th>Created on..</th></tr>
+            {% for post in posts %}
+            <tr>
+                <td>{{ post['title']}} </td><td>  {{ post['content']}} </td><td> Created {{ post['created'] }}</td>
+               
+            </tr>
+        {% endfor %}
+        </table>
+    
+
+                <div>
+                    <h2>Python < - CRUD - > MongoDB operation in Docker</h2>
+                    <table border="2" width="800">
+                        <tr><th>Name</th> <th>Age</th><th>FileName local</th> <th>Image from DB</th></tr>
+                        {% for stud in all_students  %}
+                            <tr>
+                                <td>{{ stud['name']}} </td><td>  {{ stud['marks']}} </td><td> {{ stud['imagePath'] }}</td>
+                                <td><img width=60 height=40 src="data:image/png;base64,{{ stud['imgDataStr'] }}"/></td>
+                                <td>
+                                    <form method="POST" action="{{ url_for('handle_post') }}">
+                                        <input type="hidden" name="title" value="{{ stud['name']}}"/>
+                                        <input type="hidden" name="content" value="xxx"/>
+                                        <button type="submit" name="actionType" value="deleteRecordMongoDB">DELETE</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+
+
+                <!-- 
+                <img src="Cat2.png" /> not shown. I have not defined route to it
+                PATH = {{ __dirname__ }}
+                -->
+       
+                
+<pre>
+    Image static can be only loaded from static folder. css and others as well.
+    html files should be in templates  url_for static/images/** picks for display
+    <img src="{{ url_for('static', filename='images/cat2.PNG') }}" alt='missing image'/>
+</pre>
+
+<h4>This file should be in the ./templates/ folder. This is rendered usign the ==> render_template('index.html') </h4>
+    
+</body>
+</html>

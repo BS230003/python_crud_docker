@@ -1,0 +1,59 @@
+<html>
+<body>
+    <h2>An example of Python <- CRUD -> sqlite3 DB access. </h2>
+    <hr>
+    <div>
+    <!-- url_for will route the forms request to
+    appropriate function that user made to handle it.-->
+    <!--we will retrive submitted values of inputs
+    on the backend side using 'name' field of form.-->
+        <h2>ADD Record action SQL DB (title & content)</h2>
+        <form method="POST"
+                action="{{ url_for('handle_post') }}">
+            <input type="text"  name="title" placeholder="title">
+            <input type="text"  name="content"  placeholder="Content">
+            <button type="submit" name="actionType" value="addRecordSQL">ADD RECORD</button>
+        </form>
+    </div>
+
+       <table border="2">
+           <tr><th>Name</th> <th>Age</th><th>Created</th></tr>
+           {% for post in posts %}
+           <tr>
+               <td>{{ post['title']}} </td><td>  {{ post['content']}} </td><td> Created {{ post['created'] }}</td>
+               <td>
+                   <form method="POST" action="{{ url_for('handle_post') }}">
+                       <input type="hidden" name="title" placeholder="title" value="{{ post['title']}}">
+                       <input type="hidden" name="content" value="xxxx">
+                       <button type="submit" name="actionType" value="deleteRecordSQL">DELETE</button>
+                   </form>
+               </td>
+           </tr>
+            {% endfor %}
+       </table>
+
+    <hr>
+    <div>
+        <!-- url_for will route the forms request to
+        appropriate function that user made to handle it.-->
+        <!--we will retrive submitted values of inputs
+        on the backend side using 'name' field of form.-->
+        <h2>ADD Record action MongoDB (Name & Age)</h2>
+        <form method="POST"
+                action="{{ url_for('handle_post') }}">
+            <input type="text"  name="title" placeholder="name">
+            <input type="text"  name="content"  placeholder="age">
+            <button type="submit" name="actionType" value="addRecordMongoDB">ADD RECORD</button>
+        </form>
+
+        <h2>Upload a file to server </h2>
+        <form method="POST"  action="{{ url_for('uploadFile') }}" enctype="multipart/form-data" >
+            <input type="text"  name="title" placeholder="name">
+            <input type="file"  name="file"  placeholder="select file">
+            <button type="submit" name="actionType" value="addRecordMongoDB">Update Image</button>
+        </form>
+        
+    </div>
+
+</body>
+</html>
